@@ -9,11 +9,6 @@ import { LoadMoreBtn } from "./Components/Button/Button";
 import { Spinner } from "./Components/Loader/Loader";
 import { FaFrown } from "react-icons/fa";
 
-window.scrollTo({
-  top: document.documentElement.scrollHeight,
-  behavior: "smooth",
-});
-
 const Status = {
   IDLE: "idle",
   PENDING: "pending",
@@ -73,6 +68,12 @@ class App extends Component {
         this.setState((prevState) => ({
           images: [...prevState.images, ...images],
         }));
+
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
+
         if (totalhits < 12) {
           this.setState({ requestStatus: Status.REJECTED });
         } else {
